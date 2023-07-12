@@ -3,23 +3,18 @@ const titleTask = () => {
   document.getElementById("taskTitle").innerHTML = title;
 };
 
-function deleteList(id) {
-  const del = document.getElementById(`${id}`);
-  del.remove();
-}
-
 const task = () => {
   let id = document.getElementById("inputTask").value;
   let tag = document.createElement("li");
 
   tag.setAttribute("class", id);
   let del = document.createElement("button");
-  del.setAttribute("onclick", `deleteList(eventdel)`);
+  del.setAttribute("onclick", `deleteList(event)`);
 
   let deltask1 = "Delete This Task";
   let deltask = document.createTextNode(deltask1);
   let taga = document.createElement("a");
-  taga.setAttribute("onclick", `toggleCompleted(event)`);
+  taga.setAttribute("onclick", `completa(event)`);
 
   let text = document.createTextNode(id);
 
@@ -32,6 +27,9 @@ const task = () => {
   list.appendChild(tag);
 };
 
-function toggleCompleted(event) {
-  document.querySelector("event").classList.toggle("completed");
+function completa(event) {
+  event.target.classList.toggle("completed");
+}
+function deleteList(event) {
+  event.target.parentElement.remove();
 }
